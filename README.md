@@ -1,9 +1,10 @@
 # iVision - An assistance system for blind people
 ## Features
-- Find object - It can find 80 objects(based on COCO dataset) and gives a signal when object is found. Here we have use pre trained model -ssd mobilenet.
-- Describe Scene - It can convert any scene(image) to text and then the text is converted to speech using gTTS. We have ued Flicker 8k dataset to train our model.
-- Face recognition - It has 3 steps : face detection, feature extraction, and face recognition. During feature extaction it extracts 128-d feature vector which is used for prediction.
-- OCR - It extracts texts from image.
+- It can find 80 objects(based on COCO) dataset and signal the user when the object is located.
+- It can describe any scene/image.
+- It can recognize faces.
+- It can extract texts from an image.
+
 
 # Project Demo
 
