@@ -6,14 +6,15 @@ from api.response import ApiResponse
 from transformers import BlipProcessor, BlipForConditionalGeneration
 
 router = APIRouter(prefix="")
-
+# processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
+# model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
 
 @router.post("/image-caption")
 async def generate_image_caption(image: UploadFile = File(...)):
     try:
-        # Read the uploaded image file
         processor = BlipProcessor.from_pretrained("Salesforce/blip-image-captioning-base")
         model = BlipForConditionalGeneration.from_pretrained("Salesforce/blip-image-captioning-base")
+        # Read the uploaded image file
         image = Image.open(BytesIO(await image.read())).convert('RGB')
         print("image read done")
         # Unconditional image captioning

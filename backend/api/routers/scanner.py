@@ -9,11 +9,12 @@ import tempfile
 
 router = APIRouter(prefix="")
 
+reader = easyocr.Reader(['en'])
 
 @router.post("/extract-text")
 async def extract_text_from_image(image: UploadFile = File(...)):
     try:
-        reader = easyocr.Reader(['en'])
+        # reader = easyocr.Reader(['en'])
         # Create a temporary directory
         with tempfile.TemporaryDirectory() as temp_dir:
             # Save the uploaded image to the temporary directory

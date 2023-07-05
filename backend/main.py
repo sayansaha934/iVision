@@ -2,7 +2,7 @@ from fastapi import FastAPI
 from fastapi.middleware.cors import CORSMiddleware
 
 
-# from api.routers.object_detection import router as object_detection_router
+from api.routers.object_detection import router as object_detection_router
 from api.routers.image_caption import router as image_caption_router
 from api.routers.scanner import router as scanner_router
 from api.routers.face_recognition import router as face_recognition_router

@@ -3,7 +3,6 @@ fastapi
 uvicorn
 transformers
 python-multipart
-tensorflow
 easyocr
-keras_ocr
-face_recognition
+scikit-learn
+facenet_pytorch

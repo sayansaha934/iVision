@@ -4,16 +4,18 @@ from io import BytesIO
 import torch
 from typing import Optional
 
-# from transformers import YolosImageProcessor, YolosForObjectDetection
+from transformers import YolosImageProcessor, YolosForObjectDetection
 from api.response import ApiResponse
 from pydantic import BaseModel
 
 router = APIRouter(prefix="")
 
 
+model = YolosForObjectDetection.from_pretrained("hustvl/yolos-tiny")
+image_processor = YolosImageProcessor.from_pretrained("hustvl/yolos-tiny")
+
 @router.post("/find-object")
 async def find_object(object_name: Optional[str] = None, image: UploadFile = File(...)):
-    from transformers import YolosImageProcessor, YolosForObjectDetection
 
     try:
         object_present = False
@@ -21,8 +23,6 @@ async def find_object(object_name: Optional[str] = None, image: UploadFile = Fil
         image_data = await image.read()
         image = Image.open(BytesIO(image_data))
 
-        model = YolosForObjectDetection.from_pretrained("hustvl/yolos-tiny")
-        image_processor = YolosImageProcessor.from_pretrained("hustvl/yolos-tiny")
 
         inputs = image_processor(images=image, return_tensors="pt")
         outputs = model(**inputs)
