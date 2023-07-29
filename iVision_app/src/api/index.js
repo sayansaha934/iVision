@@ -154,3 +154,33 @@ export const recogniseFace = async ({photoURI}) => {
   return await axios(axiosConfig) 
 
 };
+
+export const detectColor = async ({ photoURI}) => {
+  const url = `${API_URL}detect-color`;
+
+  const formData = new FormData();
+  formData.append("image", {
+    uri: photoURI,
+    name: "image.jpg",
+    type: "image/jpeg",
+  });
+
+  const headers = {
+    Accept: "application/json",
+    "Content-Type": "multipart/form-data",
+  };
+
+  if (Platform.OS === "ios") {
+    headers["Content-Type"] =
+      "multipart/form-data; boundary=" + formData._boundary;
+  }
+  const axiosConfig = {
+    url,
+    method: 'post',
+    data: formData,
+    headers,
+  };
+
+  return await axios(axiosConfig)
+
+};

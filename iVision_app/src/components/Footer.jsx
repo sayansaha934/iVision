@@ -3,7 +3,7 @@ import { useNavigation } from '@react-navigation/native';
 import { View, Text, StyleSheet, TouchableOpacity, FlatList} from 'react-native';
 
 const Footer = () => {
-  footerOptions = ['Read', 'Identify', 'Find', 'Settings']
+  footerOptions = ['Read', 'Identify', 'Find']  //'Settings'
   const navigation = useNavigation()
   const handleOnPress = (router) => {
     navigation.navigate(router)

@@ -8,8 +8,8 @@ RUN apt-get update -y && \
         ffmpeg \
         libsm6 \
         libxext6
-COPY requirements.txt requirements.txt
 RUN pip3 install torch torchvision torchaudio --index-url https://download.pytorch.org/whl/cpu
+COPY requirements.txt requirements.txt
 RUN python3.8 -m pip install -r requirements.txt
 COPY . .
 

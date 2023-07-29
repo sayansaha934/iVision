@@ -6,3 +6,4 @@ python-multipart
 easyocr
 scikit-learn
 facenet_pytorch
+webcolors
